@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electron Demo</title>
+</head>
+<body>
+  Holla Electron
+
+<script type="text/javascript">
+  if (typeof process !== 'undefined') {
+    const {remote} = require('electron');
+    const {Menu, MenuItem} = remote;
+    const mainMenu = new Menu();
+    mainMenu.append(new MenuItem({label: 'Copy', role: 'copy'}));
+    mainMenu.append(new MenuItem({type: 'separator'}));
+    mainMenu.append(new MenuItem({label: 'Paste', role: 'paste'}));
+  }
+</script>
+</body>
+</html>

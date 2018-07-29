@@ -1,0 +1,76 @@
+{
+  "name": "codingdead-demo",
+  "version": "1.0.0",
+  "description": "electron intro",
+  "homepage": "http://blog.codingdead.com/",
+  "appId": "com.codingdead.demo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder --dir",
+    "pack":  "PKG_VER=$(<assets/www/version) electron-builder --mac --win --linux",
+    "pack-m": "PKG_VER=$(<assets/www/version) electron-builder --mac",
+    "pack-w": "PKG_VER=$(<assets/www/version) electron-builder --win",
+    "pack-l": "PKG_VER=$(<assets/www/version) electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.codingdead.demo",
+    "productName": "CD-DEMO",
+    "artifactName": "${productName}_${os}_${env.PKG_VER}.${ext}",
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "publisherName": "CodingDead",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm"
+      ],
+      "category": "office"
+    },
+    "deb": {
+      "depends": [
+        "libgconf-2-4"
+      ]
+    },
+    "rpm": {
+      "depends": [
+        "libXScrnSaver"
+      ]
+    }
+  },
+  "repository": "https://github.com/lazyQuis/electron-demo",
+  "keywords": [
+    "intro",
+    "electron"
+  ],
+  "author": "CodingDead <x74426000@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "0.19.0",
+    "form-data": "2.3.1",
+    "nedb": "1.7.1",
+    "node-rsa": "0.4.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "1.8.1",
+    "electron-builder": "^19.35.1"
+  }
+}
